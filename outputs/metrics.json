@@ -1,0 +1,50 @@
+{
+  "run_date": "2026-11-04",
+  "data_source": "Synthetic transactions mimicking IEEE-CIS schema (see DATA_SOURCES.md) \u2014 IEEE-CIS was NOT used (Kaggle auth required)",
+  "data_file": "data/transactions.csv",
+  "n_total": 60000,
+  "n_train": 42000,
+  "n_validation": 9000,
+  "n_test": 9000,
+  "fraud_rate_total": 0.047,
+  "fraud_rate_test": 0.05211111111111111,
+  "seed": 42,
+  "model": "LightGBM",
+  "numeric_features": [
+    "amount",
+    "amount_log",
+    "hour",
+    "is_night",
+    "is_new_device",
+    "count_1h",
+    "sum_1h",
+    "count_24h",
+    "sum_24h",
+    "count_7d",
+    "time_since_last_hours",
+    "amount_vs_user_mean"
+  ],
+  "categorical_features_one_hot": [
+    "product_cd",
+    "device_type",
+    "email_domain",
+    "card_type"
+  ],
+  "roc_auc_test": 0.6518618038964379,
+  "pr_auc_average_precision_test": 0.1040817665000575,
+  "cost_model": {
+    "missed_fraud_cost": "transaction amount",
+    "false_alarm_cost_usd": 20.0
+  },
+  "cost_threshold_validation": 0.0557935511671318,
+  "precision_at_cost_threshold_test": 0.1008827238335435,
+  "recall_at_cost_threshold_test": 0.3411513859275053,
+  "analyst_capacity_per_day": 100,
+  "test_period_days": 13.488324642342894,
+  "precision_at_capacity_K": 1349,
+  "precision_at_capacity": 0.10452186805040771,
+  "recall_at_capacity": 0.3006396588486141,
+  "narrative_method": "template-based, grounded in transaction velocity/amount/device factors (no LLM call)",
+  "llm_enabled": false,
+  "human_review_note": "No human review was conducted and no review accuracy percentage is claimed. See docs/human_review_protocol.md for how a review would be rated."
+}
